@@ -1,0 +1,55 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javax.tools.Tool?>
+<BorderPane fx:id="mainBorderPane" fx:controller="com.raahil.todolist.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+
+
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New..." onAction="#showNewItemDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialog">New...<tooltip><Tooltip text="Add a New Todo Item"/></tooltip></Button>
+                    <ToggleButton fx:id="filterToggleButton" onAction="#handleFilterButton" text="5 Days">
+                        <tooltip>
+                            <Tooltip text="Button Down: Show items due from today to five days from now. Button Up: Show all items"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
+
+        </ListView>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true" onKeyPressed="#updateCurrent"/>
+            <HBox>
+                <Label text="Due: ">
+                    <font>
+                        <Font name = "Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel">
+                    <font>
+                        <Font name = "Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
